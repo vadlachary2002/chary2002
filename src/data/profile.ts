@@ -163,7 +163,7 @@ export const profile: Profile = {
       category: 'AI Engineering',
       skills: ['LangGraph', 'RAG', 'Function Calling', 'Structured Outputs', 'MCP', 'Prompt Engineering', 'Prompt Caching', 'LLM Evaluation', 'Langfuse'],
     },
-    { category: 'Frontend', skills: ['React', 'Next.js', 'Vue.js', 'Micro-frontends'] },
+    { category: 'Frontend', skills: ['React', 'Next.js', 'Vue.js', 'Micro-frontends', 'Cross-Framework Components'] },
     { category: 'Core CS', skills: ['Data Structures', 'Algorithms', 'System Design', 'Low-Level Design', 'Concurrency'] },
   ],
   achievements: ['Solved 600+ DSA problems on LeetCode with a peak contest rating of 1707.', 'Elite certification in NPTEL Competitive Programming.'],
