@@ -18,6 +18,8 @@ export interface Experience {
   location?: string;
   period: string;
   highlights: string[];
+  employer?: string;
+  isOnResume?: boolean;
   companyBlurb?: string;
   logoUrl?: string;
   cardFinish?: CardFinishName;
@@ -28,6 +30,7 @@ export interface Project {
   name: string;
   summary: string;
   stack: string[];
+  isOnResume?: boolean;
 }
 
 export interface SkillGroup {
@@ -48,6 +51,7 @@ export interface Profile {
   currentTitle: string;
   currentCompany: string;
   currentPeriod: string;
+  headline: string;
   tagline: string;
   about: string[];
   resumeSummary: string;

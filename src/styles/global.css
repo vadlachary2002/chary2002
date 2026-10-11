@@ -584,6 +584,27 @@ main {
   font-size: 13px;
 }
 
+.resume__title {
+  font-size: 15px !important;
+  margin-top: 2px !important;
+}
+
+.resume__headline {
+  font-size: 13px !important;
+  margin-top: 2px !important;
+  color: #6b6b74;
+}
+
+.resume__employer {
+  font-family: Georgia, serif;
+  font-size: 16px;
+  margin: 0 0 4px;
+}
+
+.resume__entry--grouped {
+  margin-left: 14px;
+}
+
 .resume__block {
   margin-top: 18px;
 }

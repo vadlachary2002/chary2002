@@ -1,6 +1,7 @@
 import { profile } from '../../src/data/profile';
 import type { Experience, Project, SkillGroup } from '../../src/types/profile';
 import { periodWithDuration } from '../../src/utils/experience';
+import { groupByEmployer, resumeExperiencesOf, resumeProjectsOf } from '../../src/utils/resume';
 import { bulletList, escapeHtml, externalLink, plainLink } from './html.helper';
 import { RESUME_STYLES } from './resumeStyles';
 
@@ -12,8 +13,8 @@ export function renderResumeHtml(): string {
   const sections = [
     renderBlock('About', `<p>${escapeHtml(profile.resumeSummary)}</p>`),
     renderBlock('Technical Skills', profile.skillGroups.map(renderSkillGroup).join('')),
-    renderBlock('Experience', profile.experiences.map(renderExperience).join('')),
-    renderBlock('Projects', profile.projects.map(renderProject).join('')),
+    renderBlock('Experience', groupByEmployer(resumeExperiencesOf(profile)).map(renderEmployerGroup).join('')),
+    renderBlock('Projects', resumeProjectsOf(profile).map(renderProject).join('')),
     renderBlock('Achievements', bulletList(profile.achievements)),
     renderBlock('Certifications', bulletList(profile.certifications)),
     renderBlock('Education', renderEducation()),
@@ -34,7 +35,7 @@ ${sections.join('\n')}
 </html>`;
 }
 
-// Name, headline and contact line with clickable links.
+// Name, current title, grey headline and contact line with clickable links.
 function renderHeader(fullName: string): string {
   const contactItems = [
     `<a href="mailto:${escapeHtml(profile.email)}">${escapeHtml(profile.email)}</a>`,
@@ -43,7 +44,8 @@ function renderHeader(fullName: string): string {
   ];
   return `<header class="header">
 <h1>${escapeHtml(fullName)}</h1>
-<p class="headline">${escapeHtml(profile.currentTitle)}</p>
+<p class="title">${escapeHtml(profile.currentTitle)}</p>
+<p class="headline">${escapeHtml(profile.headline)}</p>
 <p class="contact">${contactItems.join(CONTACT_SEPARATOR)}</p>
 </header>`;
 }
@@ -58,10 +60,16 @@ function renderSkillGroup(group: SkillGroup): string {
   return `<p><strong>${escapeHtml(group.category)}:</strong> ${escapeHtml(group.skills.join(', '))}</p>`;
 }
 
+// An employer header when it holds several roles, then each role.
+function renderEmployerGroup({ employer, roles }: { employer: string; roles: Experience[] }): string {
+  const header = roles.length > 1 ? `<h3 class="employer">${escapeHtml(employer)}</h3>` : '';
+  return `${header}${roles.map((role) => renderExperience(role, roles.length > 1)).join('')}`;
+}
+
 // Role, dates with duration, company with location, then highlights.
-function renderExperience(experience: Experience): string {
+function renderExperience(experience: Experience, isGrouped: boolean): string {
   const companyLine = [experience.company, experience.location].filter(Boolean).join(CONTACT_SEPARATOR);
-  return `<div class="entry">
+  return `<div class="entry${isGrouped ? ' entry--grouped' : ''}">
 <div class="entry-head"><strong>${escapeHtml(experience.title)}</strong><span>${escapeHtml(periodWithDuration(experience))}</span></div>
 <div class="entry-sub">${escapeHtml(companyLine)}</div>
 ${bulletList(experience.highlights)}

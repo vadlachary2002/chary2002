@@ -1,8 +1,10 @@
 import type { CSSProperties, ReactNode, SyntheticEvent } from 'react';
+import type { Experience } from '../../types/profile';
 import { profile, SECTION_IDS, SITE_HOST } from '../../data/profile';
 import { useResumeProtection } from '../../hooks/useResumeProtection';
 import { buildResumeRequestHref } from '../../utils/contact';
 import { periodWithDuration } from '../../utils/experience';
+import { groupByEmployer, resumeExperiencesOf, resumeProjectsOf } from '../../utils/resume';
 import { buildWatermarkImage } from '../../utils/watermark';
 import { Section } from '../layout/Section';
 
@@ -33,6 +35,8 @@ export function ResumeViewer() {
         <article className="resume__paper">
           <header className="resume__header">
             <h3>{fullName}</h3>
+            <p className="resume__title">{profile.currentTitle}</p>
+            <p className="resume__headline">{profile.headline}</p>
             <p>
               {profile.email} · {profile.links.map((link) => link.display).join(' · ')}
             </p>
@@ -51,24 +55,18 @@ export function ResumeViewer() {
           </ResumeBlock>
 
           <ResumeBlock title="Experience">
-            {profile.experiences.map((experience) => (
-              <div key={experience.id} className="resume__entry">
-                <div className="resume__entry-head">
-                  <strong>{experience.title}</strong>
-                  <span>{periodWithDuration(experience)}</span>
-                </div>
-                <em>{experience.company}</em>
-                <ul>
-                  {experience.highlights.map((highlight) => (
-                    <li key={highlight}>{highlight}</li>
-                  ))}
-                </ul>
+            {groupByEmployer(resumeExperiencesOf(profile)).map(({ employer, roles }) => (
+              <div key={employer}>
+                {roles.length > 1 && <h5 className="resume__employer">{employer}</h5>}
+                {roles.map((experience) => (
+                  <ResumeEntry key={experience.id} experience={experience} isGrouped={roles.length > 1} />
+                ))}
               </div>
             ))}
           </ResumeBlock>
 
           <ResumeBlock title="Projects">
-            {profile.projects.map((project) => (
+            {resumeProjectsOf(profile).map((project) => (
               <p key={project.name}>
                 <strong>{project.name}.</strong> {project.summary}
               </p>
@@ -98,6 +96,24 @@ export function ResumeViewer() {
         </div>
       </div>
     </Section>
+  );
+}
+
+// One role: title, dates with duration, company, then highlights.
+function ResumeEntry({ experience, isGrouped }: { experience: Experience; isGrouped: boolean }) {
+  return (
+    <div className={`resume__entry ${isGrouped ? 'resume__entry--grouped' : ''}`}>
+      <div className="resume__entry-head">
+        <strong>{experience.title}</strong>
+        <span>{periodWithDuration(experience)}</span>
+      </div>
+      <em>{experience.company}</em>
+      <ul>
+        {experience.highlights.map((highlight) => (
+          <li key={highlight}>{highlight}</li>
+        ))}
+      </ul>
+    </div>
   );
 }
 
