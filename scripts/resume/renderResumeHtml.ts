@@ -1,7 +1,7 @@
 import { profile } from '../../src/data/profile';
 import type { Experience, Project, SkillGroup } from '../../src/types/profile';
 import { periodWithDuration } from '../../src/utils/experience';
-import { bulletList, escapeHtml, plainLink } from './html.helper';
+import { bulletList, escapeHtml, externalLink, plainLink } from './html.helper';
 import { RESUME_STYLES } from './resumeStyles';
 
 const CONTACT_SEPARATOR = ' · ';
@@ -38,7 +38,7 @@ ${sections.join('\n')}
 function renderHeader(fullName: string): string {
   const contactItems = [
     `<a href="mailto:${escapeHtml(profile.email)}">${escapeHtml(profile.email)}</a>`,
-    `Portfolio: ${plainLink(profile.portfolioUrl)}`,
+    `Portfolio: ${externalLink(profile.portfolioUrl)}`,
     ...profile.links.map((link) => plainLink(link.href)),
   ];
   return `<header class="header">
