@@ -28,3 +28,6 @@ dist-ssr
 
 # Generated resume (kept off the public repo)
 resume-out
+
+# LinkedIn post drafts (kept off the public repo)
+linkedin-out
