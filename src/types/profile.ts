@@ -50,7 +50,9 @@ export interface Profile {
   currentPeriod: string;
   tagline: string;
   about: string[];
+  resumeSummary: string;
   email: string;
+  portfolioUrl: string;
   links: ProfileLink[];
   photoUrl?: string;
   experiences: Experience[];

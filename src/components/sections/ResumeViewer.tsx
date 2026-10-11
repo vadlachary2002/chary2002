@@ -38,8 +38,8 @@ export function ResumeViewer() {
             </p>
           </header>
 
-          <ResumeBlock title="Professional Summary">
-            <p>{profile.about[0]}</p>
+          <ResumeBlock title="About">
+            <p>{profile.resumeSummary}</p>
           </ResumeBlock>
 
           <ResumeBlock title="Technical Skills">

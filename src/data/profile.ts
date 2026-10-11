@@ -29,7 +29,10 @@ export const profile: Profile = {
     'I like thinking in systems. Most of my work goes beyond CRUD: recursive approval engines, policy-based RBAC, concurrency-safe credit systems, and integrations with 3000+ job boards that have to survive third-party failures.',
     'Lately I work on applied AI at Whitecarrot.ai: LangGraph agents, multi-LLM orchestration, streaming over SSE, and evaluating models in Langfuse on accuracy, latency and cost. My favourite build is AI Headhunt, a Temporal-powered pipeline that turns about 1,000 sourced profiles into a reviewed shortlist of 20 in under 30 minutes.',
   ],
+  resumeSummary:
+    'Applied AI Software Engineer with 2+ years of experience building scalable backend systems, distributed workflows, event-driven services and AI-powered applications with Python, TypeScript, PostgreSQL and AWS. I build LangGraph agent workflows, multi-LLM orchestration with real-time SSE streaming, and Langfuse evaluation on accuracy, latency and cost. Built AI Headhunt, a Temporal-powered pipeline that turns about 1,000 sourced profiles into a reviewed shortlist of 20 in under 30 minutes.',
   email: 'vadlanagarajuchary2002@gmail.com',
+  portfolioUrl: 'https://vadlachary2002.github.io/chary2002/',
   links: [
     { label: 'LinkedIn', href: 'https://www.linkedin.com/in/nagarajuchary/', display: 'linkedin.com/in/nagarajuchary' },
     { label: 'GitHub', href: 'https://github.com/vadlachary2002', display: 'github.com/vadlachary2002' },
