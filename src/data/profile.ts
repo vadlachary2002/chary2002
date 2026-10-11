@@ -27,10 +27,10 @@ export const profile: Profile = {
   about: [
     'Software engineer with 2+ years of experience building scalable backend systems, distributed workflows, event-driven services and AI-powered applications with Python, TypeScript, PostgreSQL and AWS.',
     'I like thinking in systems. Most of my work goes beyond CRUD: recursive approval engines, policy-based RBAC, concurrency-safe credit systems, and integrations with 3000+ job boards that have to survive third-party failures.',
-    'Lately I work on applied AI at Whitecarrot.ai: LangGraph agents, multi-LLM orchestration, streaming over SSE, and evaluating models in Langfuse on accuracy, latency and cost. My favourite build is AI Headhunt, a Temporal-powered pipeline that turns about 1,000 sourced profiles into a reviewed shortlist of 20 in under 30 minutes.',
+    'Lately I work on applied AI at Whitecarrot.ai: LangGraph agents, multi-LLM orchestration, streaming over SSE, and evaluating models in Langfuse on accuracy, latency and cost. My favourite build is AI Headhunt, a Temporal-powered agent that sources 4k–6k profiles and hands recruiters a reviewed top-20 shortlist, stopping early once the target is met.',
   ],
   resumeSummary:
-    'Applied AI Software Engineer with 2+ years of experience building scalable backend systems, distributed workflows, event-driven services and AI-powered applications with Python, TypeScript, PostgreSQL and AWS. I build LangGraph agent workflows, multi-LLM orchestration with real-time SSE streaming, and Langfuse evaluation on accuracy, latency and cost. Built AI Headhunt, a Temporal-powered pipeline that turns about 1,000 sourced profiles into a reviewed shortlist of 20 in under 30 minutes.',
+    'Applied AI Software Engineer with 2+ years of experience building scalable backend systems, distributed workflows, event-driven services and AI-powered applications with Python, TypeScript, PostgreSQL and AWS. I build LangGraph agent workflows, RAG on PostgreSQL with pgvector, multi-LLM orchestration and Langfuse evaluation. Built AI Headhunt, a Temporal-powered agent that sources 4k–6k profiles and delivers a reviewed top-20 shortlist, stopping early once the target is met to keep costs low.',
   email: 'vadlanagarajuchary2002@gmail.com',
   portfolioUrl: 'https://vadlachary2002.github.io/chary2002/',
   links: [
@@ -48,11 +48,10 @@ export const profile: Profile = {
       companyBlurb:
         'Whitecarrot.ai is an AI recruiter that runs the entire hiring process: an all-in-one recruitment agent and ATS that sources, screens and engages candidates for hiring teams.',
       highlights: [
-        'Built AI Headhunt, Whitecarrot.ai\'s headhunting agent, as reliable distributed background workflows on Temporal: it sources around 1,000 candidate profiles in under 30 minutes, then reviews, scores and shortlists the top 20.',
-        'Built AI agent workflows using LangGraph, tool orchestration, search pipelines and candidate enrichment across multiple external services.',
-        'Engineered real-time AI infrastructure using Server-Sent Events and multi-LLM integrations for low-latency streaming interactions.',
-        'Designed and evaluated multi-model agent workflows, choosing models and orchestration strategies by accuracy, reliability, latency and cost.',
-        'Used Langfuse for prompt management, tracing, datasets, experimentation and evaluation of production AI workflows.',
+        'Built AI Headhunt, Whitecarrot.ai\'s headhunting agent, as durable distributed workflows on Temporal. It sources 4k–6k candidate profiles, then reviews, scores and shortlists the top 20. It stops sourcing and scoring as soon as the shortlist target is met, for example after 1,000 profiles, so no money goes on extra scraping or LLM calls.',
+        'Built AI agent workflows with LangGraph, covering tool orchestration, search pipelines and candidate enrichment through external providers, including SignalHire for contact data and Apify for LinkedIn profile scraping.',
+        'Designed multi-model agent workflows with dynamic prompt injection, building the context for each step and each candidate at run time. Built RAG on PostgreSQL with pgvector embeddings to ground agents in candidate and job data, and chose models by accuracy, latency and cost.',
+        'Used Langfuse for prompt management, tracing, datasets and evaluation. Every agent turn and observation gets a score, so regressions show up in real time and drive continuous prompt and model improvements.',
         'Built cost-aware AI workflows with usage and credit controls: configurable limits, recurring quotas and pay-as-you-go execution.',
         'Improved agent reliability through structured tool execution, failure handling, retries and controlled orchestration.',
         'Evolved database architecture and data access patterns toward scalable, tenant-oriented workloads as usage grew.',
@@ -67,15 +66,16 @@ export const profile: Profile = {
       logoUrl: WHITECARROT_IO_LOGO_URL,
       tag: { shortTitle: 'Founding Engineer', company: 'Whitecarrot' },
       highlights: [
-        'Built and evolved core backend systems for an AI-powered recruitment platform with multi-tenant workflows, automation and integrations.',
-        'Architected recursive workflow engines with configurable approval hierarchies and nested AND/OR rule evaluation.',
+        'Built and evolved the core backend of an AI-powered recruitment platform, including hiring workflows, automation and third-party integrations.',
+        'Architected a recursive approval engine that evaluates nested AND/OR rules across approval hierarchies of any depth, so each customer can model its own sign-off process for requisitions and offers without code changes.',
         'Designed multi-tenant RBAC with structured permission resolution for fine-grained access control.',
         'Developed concurrency-safe transactional credit systems for high-volume job posting and resume processing.',
         'Implemented event-driven workflows on AWS EventBridge and SQS with retries, scheduling and fault-tolerant queue processing.',
         'Integrated 3000+ external job board APIs with resilient request workflows for third-party failures and high volume.',
         'Tuned PostgreSQL queries, indexes and data access patterns for responsiveness under concurrent load.',
         'Built monitoring and observability with Datadog: logging, alerting and production diagnostics.',
-        'Built React components that run inside the existing Vue.js app, enabling incremental migration without a rewrite.',
+        'Built framework-agnostic React components that mount inside the existing Vue.js app, or any other host framework, allowing migration feature by feature instead of a rewrite.',
+        'Built route-level micro-frontends so Vue.js and Next.js apps serve different routes of one product, sharing session and user data through cookies for seamless navigation between them.',
       ],
     },
     {
@@ -121,8 +121,8 @@ export const profile: Profile = {
     {
       name: 'AI Headhunt',
       summary:
-        'Headhunting agent for Whitecarrot.ai running as durable background workflows on Temporal. In under 30 minutes it sources about 1,000 profiles, reviews and ranks them with LangGraph agents, and hands recruiters a shortlist of the top 20, with every run traced in Langfuse.',
-      stack: ['Temporal', 'LangGraph', 'Langfuse', 'TypeScript', 'PostgreSQL'],
+        'Headhunting agent for Whitecarrot.ai built as durable Temporal workflows. A search stage gathers about 4k profiles, which de-duplicate to about 2k unique candidates. Full profiles are then scraped through Apify\'s LinkedIn scraper in batches of 100, and each batch is shortlisted as soon as it arrives against recruiter-defined criteria of 4 must-haves, 5 nice-to-haves and a target shortlist percentage. Prompt caching keeps LLM costs low. Recruiters can edit the criteria and re-evaluate every candidate at any time, so a criteria mistake never loses a good candidate. Every run and decision is recorded for future audits.',
+      stack: ['Temporal', 'LangGraph', 'Apify', 'Langfuse', 'TypeScript', 'PostgreSQL'],
     },
     {
       name: 'AI Recruitment Agent System',
@@ -152,11 +152,11 @@ export const profile: Profile = {
       category: 'Backend',
       skills: ['Node.js', 'NestJS', 'Express.js', 'REST APIs', 'SSE', 'Temporal', 'Durable Workflows', 'Event-Driven Architecture', 'Distributed Systems', 'Concurrency'],
     },
-    { category: 'Databases', skills: ['PostgreSQL', 'MySQL', 'MongoDB', 'Query Tuning', 'Data Modeling', 'Multi-Tenant Architecture'] },
+    { category: 'Databases', skills: ['PostgreSQL', 'pgvector', 'MySQL', 'MongoDB', 'Query Tuning', 'Data Modeling', 'Multi-Tenant Architecture'] },
     { category: 'Cloud', skills: ['AWS EC2', 'S3', 'RDS', 'SQS', 'EventBridge', 'Fault Tolerance', 'Retry Mechanisms'] },
-    { category: 'AI Engineering', skills: ['LangGraph', 'Multi-LLM Systems', 'Agent Workflows', 'Prompt Management', 'Tracing', 'Evaluation', 'Langfuse'] },
+    { category: 'AI Engineering', skills: ['LangGraph', 'RAG', 'Multi-LLM Systems', 'Agent Workflows', 'Dynamic Prompting', 'Prompt Caching', 'Tracing', 'Evaluation', 'Langfuse'] },
     { category: 'Observability', skills: ['Datadog', 'Logging', 'Alerting', 'Monitoring', 'Workflow Tracing'] },
-    { category: 'Frontend', skills: ['React', 'Vue.js', 'TypeScript', 'Cross-Framework Components'] },
+    { category: 'Frontend', skills: ['React', 'Next.js', 'Vue.js', 'TypeScript', 'Micro-Frontends', 'Cross-Framework Components'] },
     { category: 'Core CS', skills: ['Data Structures', 'Algorithms', 'OOP', 'Concurrency', 'System Design'] },
   ],
   achievements: [
