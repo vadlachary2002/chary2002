@@ -13,7 +13,7 @@ npm run dev
 
 All text, roles, links and projects live in `src/data/profile.ts`.
 
-- **Photo:** put a square-ish image at `public/photo.jpg`, then set `photoUrl: '/photo.jpg'` in the profile. It shows as the round avatar above your name.
+- **Photo:** put a square-ish image at `public/photo.jpg`, then set ``photoUrl: `${ASSET_BASE}photo.jpg` `` in the profile. It shows as the round avatar above your name.
 - **Strap text:** each card's strap prints the experience's `tag.company`, or its `company` when there is no tag.
 - **Ring:** every experience becomes a stop on the ring, newest first, with a "Now" mark for the current year. `companyBlurb` sets the short description shown for a role.
 - **Colours:** CSS tokens at the top of `src/styles/global.css` and the card palette in `src/config/theme.ts`.
@@ -25,6 +25,10 @@ The PDF is never shipped. The resume renders as HTML with selection, copy, right
 
 ## Deploy to GitHub Pages
 
-1. Create a public repo named `<username>.github.io` and push this folder to `main`.
-2. In the repo, open Settings, then Pages, and set Source to "GitHub Actions".
-3. Every push to `main` builds and deploys through `.github/workflows/deploy.yml`.
+The site lives at https://vadlachary2002.github.io/chary2002/. This repo pushes through the personal SSH alias `github.com.personal`, so only this repo uses the vadlachary2002 account.
+
+1. In the repo on GitHub, open Settings, then Pages, and set Source to "GitHub Actions" (one time).
+2. Every push to `main` builds and deploys through `.github/workflows/deploy.yml`.
+3. If the repo is renamed, update `GITHUB_PAGES_BASE` in `vite.config.ts` and `SITE_HOST` in `src/data/profile.ts`.
+
+Locally, the dev server runs at http://localhost:5173/chary2002/.
