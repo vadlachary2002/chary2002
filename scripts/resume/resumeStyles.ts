@@ -15,8 +15,7 @@ a { color: inherit; text-decoration: underline; text-underline-offset: 2px; text
 h1, h2, h3, p, ul { margin: 0; }
 .header { text-align: center; margin-bottom: 10px; }
 .header h1 { font-size: 28px; font-weight: 700; line-height: 1.2; }
-.header .title { margin-top: 2px; font-size: 14px; }
-.header .headline { margin-top: 1px; font-size: 12px; color: #6b6b74; }
+.header .headline { margin-top: 2px; font-size: 14px; }
 .header .contact { margin-top: 5px; font-size: 11.5px; }
 .block { margin-top: 10px; }
 .block h2 {

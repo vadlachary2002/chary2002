@@ -35,7 +35,7 @@ ${sections.join('\n')}
 </html>`;
 }
 
-// Name, current title, grey headline and contact line with clickable links.
+// Name, headline and contact line with clickable links.
 function renderHeader(fullName: string): string {
   const contactItems = [
     `<a href="mailto:${escapeHtml(profile.email)}">${escapeHtml(profile.email)}</a>`,
@@ -44,7 +44,6 @@ function renderHeader(fullName: string): string {
   ];
   return `<header class="header">
 <h1>${escapeHtml(fullName)}</h1>
-<p class="title">${escapeHtml(profile.currentTitle)}</p>
 <p class="headline">${escapeHtml(profile.headline)}</p>
 <p class="contact">${contactItems.join(CONTACT_SEPARATOR)}</p>
 </header>`;

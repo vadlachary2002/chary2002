@@ -35,7 +35,6 @@ export function ResumeViewer() {
         <article className="resume__paper">
           <header className="resume__header">
             <h3>{fullName}</h3>
-            <p className="resume__title">{profile.currentTitle}</p>
             <p className="resume__headline">{profile.headline}</p>
             <p>
               {profile.email} · {profile.links.map((link) => link.display).join(' · ')}
