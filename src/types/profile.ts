@@ -30,6 +30,8 @@ export interface Article {
   title: string;
   url: string;
   publisher: string;
+  topics: string[];
+  excerpt: string[];
 }
 
 export interface Project {
@@ -68,6 +70,7 @@ export interface Profile {
   experiences: Experience[];
   projects: Project[];
   articles: Article[];
+  writingProfileUrl: string;
   skillGroups: SkillGroup[];
   achievements: string[];
   certifications: string[];

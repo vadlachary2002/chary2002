@@ -160,8 +160,20 @@ export const profile: Profile = {
       title: 'Moving a Legacy App to React Without a Rewrite',
       url: 'https://medium.com/@charynagarajuvadla1999/moving-a-legacy-app-to-react-without-a-rewrite-4b399c1a9a4e',
       publisher: 'Medium',
+      topics: [
+        'Standalone React bundles on a plain URL',
+        'CSS isolation with Shadow DOM',
+        'Two-way communication with legacy code',
+        'The first-load problem, still open',
+      ],
+      excerpt: [
+        'There is no "Migrate to React" button. We checked. 😉',
+        'We reached the point where we didn\'t want to build another feature in our legacy frontend. New hires knew React, our new product surfaces were heading toward Next.js, and every change to the old code felt like paying interest on a loan we had stopped wanting.',
+        'But the old app is a live product. It has real users, real customers and years of behaviour baked into it. This is the story of how we started moving it to React one page at a time, without freezing features and without a big-bang cut-over.',
+      ],
     },
   ],
+  writingProfileUrl: 'https://medium.com/@charynagarajuvadla1999',
   skillGroups: [
     { category: 'Languages', skills: ['TypeScript', 'JavaScript', 'Python', 'Java', 'SQL'] },
     { category: 'Backend', skills: ['Node.js', 'NestJS', 'Express.js', 'REST APIs', 'Temporal', 'Event-Driven Architecture', 'Distributed Systems'] },
