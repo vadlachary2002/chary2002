@@ -1,10 +1,10 @@
 import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
 
-const GITHUB_PAGES_BASE = '/chary2002/';
+const RELATIVE_ASSET_BASE = './';
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: GITHUB_PAGES_BASE,
+  base: RELATIVE_ASSET_BASE,
   plugins: [react()],
 });

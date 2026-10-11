@@ -1,7 +1,7 @@
 import { CARD_FINISHES } from '../config/theme';
 import type { Profile } from '../types/profile';
 
-export const SITE_HOST = 'vadlachary2002.github.io/chary2002';
+export const SITE_HOST = 'vadlachary2002.github.io';
 
 const ASSET_BASE = import.meta.env.BASE_URL;
 const WHITECARROT_AI_LOGO_URL = `${ASSET_BASE}logos/whitecarrot-ai.png`;

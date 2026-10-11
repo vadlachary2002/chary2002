@@ -25,10 +25,10 @@ The PDF is never shipped. The resume renders as HTML with selection, copy, right
 
 ## Deploy to GitHub Pages
 
-The site lives at https://vadlachary2002.github.io/chary2002/. This repo pushes through the personal SSH alias `github.com.personal`, so only this repo uses the vadlachary2002 account.
+Assets use relative paths, so the build works at a domain root or under a repo sub-path without config changes. This repo pushes through the personal SSH alias `github.com.personal`, so only this repo uses the vadlachary2002 account.
 
 1. In the repo on GitHub, open Settings, then Pages, and set Source to "GitHub Actions" (one time).
 2. Every push to `main` builds and deploys through `.github/workflows/deploy.yml`.
-3. If the repo is renamed, update `GITHUB_PAGES_BASE` in `vite.config.ts` and `SITE_HOST` in `src/data/profile.ts`.
+3. GitHub serves a repo named `chary2002` at `vadlachary2002.github.io/chary2002/`. Rename the repo to `vadlachary2002.github.io` to serve it at the root instead.
 
-Locally, the dev server runs at http://localhost:5173/chary2002/.
+Locally, the dev server runs at http://localhost:5173/.
