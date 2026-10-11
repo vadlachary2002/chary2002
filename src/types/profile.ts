@@ -26,6 +26,12 @@ export interface Experience {
   tag?: HangingTag;
 }
 
+export interface Article {
+  title: string;
+  url: string;
+  publisher: string;
+}
+
 export interface Project {
   name: string;
   summary: string;
@@ -61,6 +67,7 @@ export interface Profile {
   photoUrl?: string;
   experiences: Experience[];
   projects: Project[];
+  articles: Article[];
   skillGroups: SkillGroup[];
   achievements: string[];
   certifications: string[];

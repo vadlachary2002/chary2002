@@ -11,6 +11,7 @@ export const SECTION_IDS = {
   about: 'about',
   experience: 'experience',
   projects: 'projects',
+  articles: 'articles',
   skills: 'skills',
   resume: 'resume',
   contact: 'contact',
@@ -152,6 +153,13 @@ export const profile: Profile = {
       summary: 'Interactive cube simulator with complex state management and cube transformation logic.',
       stack: ['JavaScript', 'State machines'],
       isOnResume: false,
+    },
+  ],
+  articles: [
+    {
+      title: 'Moving a Legacy App to React Without a Rewrite',
+      url: 'https://medium.com/@charynagarajuvadla1999/moving-a-legacy-app-to-react-without-a-rewrite-4b399c1a9a4e',
+      publisher: 'Medium',
     },
   ],
   skillGroups: [

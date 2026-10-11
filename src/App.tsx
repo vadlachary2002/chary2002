@@ -1,6 +1,7 @@
 import { Nav } from './components/layout/Nav';
 import { RingHero } from './components/ring/RingHero';
 import { About } from './components/sections/About';
+import { Articles } from './components/sections/Articles';
 import { Contact } from './components/sections/Contact';
 import { ExperienceTimeline } from './components/sections/ExperienceTimeline';
 import { Projects } from './components/sections/Projects';
@@ -21,6 +22,7 @@ export default function App() {
         <About />
         <ExperienceTimeline />
         <Projects />
+        <Articles />
         <Skills />
         <ResumeViewer />
         <Contact />

@@ -8,6 +8,7 @@ const NAV_ITEMS = [
   { id: SECTION_IDS.about, label: 'About' },
   { id: SECTION_IDS.experience, label: 'Experience' },
   { id: SECTION_IDS.projects, label: 'Projects' },
+  { id: SECTION_IDS.articles, label: 'Articles' },
   { id: SECTION_IDS.resume, label: 'Resume' },
   { id: SECTION_IDS.contact, label: 'Contact' },
 ];
