@@ -3,7 +3,7 @@ import type { Experience } from '../../types/profile';
 import { profile, SECTION_IDS, SITE_HOST } from '../../data/profile';
 import { useResumeProtection } from '../../hooks/useResumeProtection';
 import { buildResumeRequestHref } from '../../utils/contact';
-import { periodWithDuration } from '../../utils/experience';
+import { periodWithDuration, tenureWithDuration } from '../../utils/experience';
 import { groupByEmployer, resumeExperiencesOf, resumeProjectsOf } from '../../utils/resume';
 import { buildWatermarkImage } from '../../utils/watermark';
 import { Section } from '../layout/Section';
@@ -56,7 +56,12 @@ export function ResumeViewer() {
           <ResumeBlock title="Experience">
             {groupByEmployer(resumeExperiencesOf(profile)).map(({ employer, roles }) => (
               <div key={employer}>
-                {roles.length > 1 && <h5 className="resume__employer">{employer}</h5>}
+                {roles.length > 1 && (
+                  <h5 className="resume__employer">
+                    <span>{employer}</span>
+                    <span className="resume__tenure">{tenureWithDuration(roles)}</span>
+                  </h5>
+                )}
                 {roles.map((experience) => (
                   <ResumeEntry key={experience.id} experience={experience} isGrouped={roles.length > 1} />
                 ))}

@@ -1,6 +1,6 @@
 import { profile } from '../../src/data/profile';
 import type { Experience, Project, SkillGroup } from '../../src/types/profile';
-import { periodWithDuration } from '../../src/utils/experience';
+import { periodWithDuration, tenureWithDuration } from '../../src/utils/experience';
 import { groupByEmployer, resumeExperiencesOf, resumeProjectsOf } from '../../src/utils/resume';
 import { bulletList, escapeHtml, externalLink, plainLink } from './html.helper';
 import { RESUME_STYLES } from './resumeStyles';
@@ -61,7 +61,7 @@ function renderSkillGroup(group: SkillGroup): string {
 
 // An employer header when it holds several roles, then each role.
 function renderEmployerGroup({ employer, roles }: { employer: string; roles: Experience[] }): string {
-  const header = roles.length > 1 ? `<h3 class="employer">${escapeHtml(employer)}</h3>` : '';
+  const header = roles.length > 1 ? `<h3 class="employer"><span>${escapeHtml(employer)}</span><span class="tenure">${escapeHtml(tenureWithDuration(roles))}</span></h3>` : '';
   return `${header}${roles.map((role) => renderExperience(role, roles.length > 1)).join('')}`;
 }
 

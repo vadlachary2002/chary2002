@@ -879,9 +879,19 @@ main {
 }
 
 .resume__employer {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
   font-family: Georgia, serif;
   font-size: 16px;
   margin: 0 0 4px;
+}
+
+.resume__tenure {
+  font-size: 13px;
+  font-weight: 400;
+  color: #555;
 }
 
 .resume__entry--grouped {

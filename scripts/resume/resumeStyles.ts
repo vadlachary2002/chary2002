@@ -33,7 +33,8 @@ h1, h2, h3, p, ul { margin: 0; }
 .entry-head { display: flex; justify-content: space-between; gap: 12px; break-after: avoid; }
 .entry-head span { white-space: nowrap; }
 .entry-sub { font-style: italic; break-after: avoid; }
-.employer { font-size: 14px; font-weight: 700; margin: 0 0 3px; break-after: avoid; }
+.employer { display: flex; justify-content: space-between; align-items: baseline; font-size: 14px; font-weight: 700; margin: 0 0 3px; break-after: avoid; }
+.employer .tenure { font-size: 11px; font-weight: 400; color: #555; }
 .entry--grouped { margin-left: 12px; }
 .stack { color: #4a4a52; }
 `;

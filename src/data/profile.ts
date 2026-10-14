@@ -22,7 +22,7 @@ export const profile: Profile = {
   lastName: 'Vadla',
   currentTitle: 'Applied AI Software Engineer',
   currentCompany: 'Whitecarrot.ai',
-  currentPeriod: 'Jan 2024 — Present',
+  currentPeriod: 'Jan 2026 — Present',
   headline: 'Software Engineer · Applied AI & Backend Systems',
   tagline:
     'I build AI agent workflows and the backend systems underneath them: event-driven services, multi-tenant platforms and real-time interfaces.',
@@ -46,7 +46,7 @@ export const profile: Profile = {
       title: 'Applied AI Software Engineer',
       company: 'Whitecarrot.ai',
       employer: 'Whitecarrot',
-      period: 'Jan 2024 — Present',
+      period: 'Jan 2026 — Present',
       logoUrl: WHITECARROT_AI_LOGO_URL,
       companyBlurb:
         'Whitecarrot.ai is an AI recruiter that runs the entire hiring process: an all-in-one recruitment agent and ATS that sources, screens and engages candidates for hiring teams.',

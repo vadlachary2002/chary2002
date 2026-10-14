@@ -8,6 +8,7 @@ const MONTH_YEAR_PATTERN = /(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) (\
 const MONTH_INDEX: Record<string, number> = { Jan: 0, Feb: 1, Mar: 2, Apr: 3, May: 4, Jun: 5, Jul: 6, Aug: 7, Sep: 8, Oct: 9, Nov: 10, Dec: 11 };
 const MONTHS_PER_YEAR = 12;
 const DURATION_SEPARATOR = ' · ';
+const PERIOD_SEPARATOR = ' — ';
 
 // Returns the first four-digit year in a period like "Jan 2025 — Present".
 export function startYearOf(experience: Experience): string {
@@ -45,6 +46,14 @@ export function durationOf(experience: Experience, today: Date = new Date()): st
   if (start === undefined) return '';
   const endIndex = end ?? today.getFullYear() * MONTHS_PER_YEAR + today.getMonth();
   return formatDuration(inclusiveMonths(start, endIndex));
+}
+
+// Overall span across several roles at one employer, e.g. "Jan 2024 — Present · 2.8 yrs".
+export function tenureWithDuration(roles: Experience[], today: Date = new Date()): string {
+  const periods = roles.map((role) => role.period);
+  const start = periods[periods.length - 1]?.split(PERIOD_SEPARATOR)[0] ?? '';
+  const end = periods[0]?.split(PERIOD_SEPARATOR)[1] ?? '';
+  return periodWithDuration({ ...roles[0], period: `${start}${PERIOD_SEPARATOR}${end}` }, today);
 }
 
 // Period text with its duration appended, e.g. "Jan 2024 — Present · 2.8 yrs".
